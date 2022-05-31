@@ -1,15 +1,31 @@
 import React, { useState } from "react";
+import { ipcRenderer } from "electron";
+
+import { getDeepLAccessKey } from "./storage";
+
+const translate = async (text: string): Promise<string> => {
+  const apiKey = getDeepLAccessKey();
+  if (!apiKey) {
+    return;
+  }
+  const result = await ipcRenderer.invoke("translate", { text, apiKey });
+  return result;
+};
 
 export const TranslatePane = () => {
   const [leftText, setLeftText] = useState<string>("");
   const [rightText, setRightText] = useState<string>("");
 
-  const onLeftTextareaChante = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setLeftText(e.target.value);
-    setRightText(e.target.value);
+  const onLeftTextareaChange = async (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const text = e.target.value;
+    setLeftText(text);
+    const result = await translate(text);
+    setRightText(result);
   };
 
-  const onRightTextareaChante = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onRightTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setRightText(e.target.value);
     setLeftText(e.target.value);
   };
@@ -20,7 +36,7 @@ export const TranslatePane = () => {
         <textarea
           className="left-area"
           value={leftText}
-          onChange={onLeftTextareaChante}
+          onChange={onLeftTextareaChange}
         ></textarea>
       </div>
       <div>
@@ -28,7 +44,7 @@ export const TranslatePane = () => {
         <textarea
           className="right-area"
           value={rightText}
-          onChange={onRightTextareaChante}
+          onChange={onRightTextareaChange}
         ></textarea>
       </div>
     </div>

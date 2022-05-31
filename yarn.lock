@@ -4051,6 +4051,11 @@ lzma-native@^8.0.5:
     node-gyp-build "^4.2.1"
     readable-stream "^3.6.0"
 
+mabiki@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mabiki/-/mabiki-1.0.1.tgz#c1fa8237055d1ffe0499f193a8b3f3f9d3629331"
+  integrity sha512-uq91Ordht5o0iiIyiV/ELGzRgUh9tXRxo/JeALnxPaC7aB87A3lsgmvDn/SgWKDB8I6DA7C/LR86EHE7FQzjrw==
+
 make-fetch-happen@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/make-fetch-happen/-/make-fetch-happen-9.1.0.tgz#53085a09e7971433e6765f7971bf63f4e05cb968"

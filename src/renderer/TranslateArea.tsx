@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from "react";
-import * as deepl from "deepl-node";
 
 import { TranslatePane } from "./TranslatePane";
 import { SettingPane } from "./SettingPane";
