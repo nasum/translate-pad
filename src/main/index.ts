@@ -55,7 +55,12 @@ app.on("activate", () => {
 
 ipcMain.handle("translate", async (event, arg) => {
   const translator = new deepl.Translator(arg.apiKey);
-  const result = await translator.translateText(arg.text, null, "en-US");
+
+  if (arg.text.length === 0) {
+    return "";
+  }
+
+  const result = await translator.translateText(arg.text, null, arg.target);
 
   console.log("text: " + arg.text);
   console.log("translate: " + result.text);
