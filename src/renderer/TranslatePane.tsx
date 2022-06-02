@@ -43,7 +43,6 @@ export const TranslatePane = () => {
         <h3>日</h3>
         <textarea
           className="left-area"
-          value={leftText}
           onChange={onLeftTextareaChange}
           ref={LeftTextareaRef}
         ></textarea>
@@ -52,7 +51,6 @@ export const TranslatePane = () => {
         <h3>英</h3>
         <textarea
           className="right-area"
-          value={rightText}
           onChange={onRightTextareaChange}
           ref={RightTextareaRef}
         ></textarea>
