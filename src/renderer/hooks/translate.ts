@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ipcRenderer } from "electron";
 import { TargetLanguageCode } from "deepl-node";
 import { debounce } from "mabiki";
@@ -21,10 +21,17 @@ const translate = (
 export const useTranslate = (text: string, target: TargetLanguageCode) => {
   const [result, setResult] = useState<string>("");
 
+  const doTranslate = useCallback(
+    debounce(async (text: string, target: TargetLanguageCode) => {
+      translate(text, target).then((result) => {
+        setResult(result);
+      });
+    }, 500),
+    []
+  );
+
   useEffect(() => {
-    translate(text, target).then((result) => {
-      setResult(result);
-    });
+    doTranslate(text, target);
   }, [text, target]);
 
   return result;
