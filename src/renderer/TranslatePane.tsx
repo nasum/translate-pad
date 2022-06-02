@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { useTranslate } from "./hooks/translate";
 
 export const TranslatePane = () => {
+  const LeftTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const RightTextareaRef = useRef<HTMLTextAreaElement>(null);
+
   const [leftText, setLeftText] = useState<string>("");
   const [rightText, setRightText] = useState<string>("");
 
@@ -10,12 +13,16 @@ export const TranslatePane = () => {
   const rightResult = useTranslate(rightText, "ja");
 
   useEffect(() => {
-    setRightText(leftResult);
-  }, [leftText, leftResult]);
+    if (RightTextareaRef.current) {
+      RightTextareaRef.current.value = leftResult;
+    }
+  }, [leftResult]);
 
   useEffect(() => {
-    setLeftText(rightResult);
-  }, [rightText, rightResult]);
+    if (LeftTextareaRef.current) {
+      LeftTextareaRef.current.value = rightResult;
+    }
+  }, [rightResult]);
 
   const onLeftTextareaChange = async (
     e: React.ChangeEvent<HTMLTextAreaElement>
@@ -38,6 +45,7 @@ export const TranslatePane = () => {
           className="left-area"
           value={leftText}
           onChange={onLeftTextareaChange}
+          ref={LeftTextareaRef}
         ></textarea>
       </div>
       <div>
@@ -46,6 +54,7 @@ export const TranslatePane = () => {
           className="right-area"
           value={rightText}
           onChange={onRightTextareaChange}
+          ref={RightTextareaRef}
         ></textarea>
       </div>
     </div>
