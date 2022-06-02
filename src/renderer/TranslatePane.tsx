@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { ipcRenderer } from "electron";
 
-import { getDeepLAccessKey } from "./storage";
 import { useTranslate } from "./hooks/translate";
-
-const translate = async (text: string): Promise<string> => {
-  const apiKey = getDeepLAccessKey();
-  if (!apiKey) {
-    return;
-  }
-  const result = await ipcRenderer.invoke("translate", { text, apiKey });
-  return result;
-};
 
 export const TranslatePane = () => {
   const [leftText, setLeftText] = useState<string>("");
   const [rightText, setRightText] = useState<string>("");
 
-  const result = useTranslate(leftText, "en-US");
+  const leftResult = useTranslate(leftText, "en-US");
+  const rightResult = useTranslate(rightText, "ja");
 
   useEffect(() => {
-    setRightText(result);
-  }, [leftText, result]);
+    setRightText(leftResult);
+  }, [leftText, leftResult]);
+
+  useEffect(() => {
+    setLeftText(rightResult);
+  }, [rightText, rightResult]);
 
   const onLeftTextareaChange = async (
     e: React.ChangeEvent<HTMLTextAreaElement>
@@ -30,9 +24,11 @@ export const TranslatePane = () => {
     setLeftText(text);
   };
 
-  const onRightTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setRightText(e.target.value);
-    setLeftText(e.target.value);
+  const onRightTextareaChange = async (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const text = e.target.value;
+    setRightText(text);
   };
   return (
     <div className="translate-area">
