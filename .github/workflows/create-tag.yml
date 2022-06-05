@@ -10,7 +10,11 @@ jobs:
           node-version: "18.2.x"
       - name: package-version
         run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
-      - name: package-version-to-git-tag
+      - name: git setting
+        run: |
+          git config --local user.email "{{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "{{ github.actor }}"
+      - name: push tag
         continue-on-error: true
         run: 
           git tag -a v${{ env.PACKAGE_VERSION }} && git push origin v${{ env.PACKAGE_VERSION }}
