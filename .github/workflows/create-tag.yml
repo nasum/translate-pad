@@ -26,5 +26,3 @@ jobs:
     needs: [create-tag]
     if: ${{ needs.create-tag.outputs.can_release }} == 'true'
     uses: ./.github/workflows/publish.yml
-    with:
-      can_release: $CAN_RELEASE
