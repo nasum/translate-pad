@@ -1,0 +1,28 @@
+name: create tag
+on: push
+env:
+  CAN_RELEASE: false
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.2.x"
+      - name: package-version
+        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+      - name: git setting
+        run: |
+          git config --local user.email "{{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "{{ github.actor }}"
+      - name: push tag
+        continue-on-error: true
+        run: |
+          set -eux
+          git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "CAN_RELEASE=true" > $GITHUB_ENV
+  call-workflow:
+    needs: [create-tag]
+    uses: ./.github/workflows/publish.yml
+    with:
+      can_release: $CAN_RELEASE
