@@ -24,5 +24,6 @@ jobs:
           git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "::set-output can_release=true"
   call-workflow:
     needs: [create-tag]
-    if: ${{ needs.create-tag.outputs.can_release }} == 'true'
     uses: ./.github/workflows/publish.yml
+    with:
+      can_release: ${{ needs.create-tag.outputs.can_release }} 

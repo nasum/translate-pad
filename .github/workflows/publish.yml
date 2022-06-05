@@ -1,7 +1,13 @@
 name: publish
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      can_release:
+        required: true
+        type: string
 jobs:
   publish-linux:
+    if: inputs.can_release == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,6 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: yarn run publish
   publish-mac:
+    if: inputs.can_release == 'true'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
