@@ -21,13 +21,13 @@ jobs:
         continue-on-error: true
         run: |
           set -eux
-          git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "::set-output can_release=true"
+          git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "::set-output name=can_release::true"
   check:
     needs: [create-tag]
     runs-on: ubuntu-latest
     steps:
       - name: check
-        run: 
+        run: |
           echo "can_release"
           echo "${{ needs.create-tag.outputs.can_release }}"
           echo "end"
