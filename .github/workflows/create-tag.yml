@@ -29,7 +29,8 @@ jobs:
       - name: check
         run: 
           echo "can_release"
-          echo ${{ needs.create-tag.outputs.can_release }}
+          echo "${{ needs.create-tag.outputs.can_release }}"
+          echo "end"
   call-workflow:
     needs: [create-tag]
     uses: ./.github/workflows/publish.yml
