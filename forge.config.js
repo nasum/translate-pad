@@ -9,7 +9,7 @@ module.exports = {
     },
     {
       name: "@electron-forge/maker-zip",
-      platforms: ["darwin"],
+      platforms: ["darwin", "linux"],
     },
     {
       name: "@electron-forge/maker-deb",
@@ -37,5 +37,17 @@ module.exports = {
         },
       },
     ],
+  ],
+  publishers: [
+    {
+      name: "@electron-forge/publisher-github",
+      config: {
+        repository: {
+          owner: "nasum",
+          name: "translate-pad",
+        },
+        prerelease: true,
+      },
+    },
   ],
 };
