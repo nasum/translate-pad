@@ -11,7 +11,7 @@ jobs:
       - name: package-version
         run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
       - name: push tag
-      - uses: actions-ecosystem/action-push-tag@v1
+        uses: actions-ecosystem/action-push-tag@v1
         continue-on-error: true
         with:
           tag: v${{ env.PACKAGE_VERSION }}
