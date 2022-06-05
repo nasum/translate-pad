@@ -1,0 +1,36 @@
+name: publish
+on: 
+  workflow_call:
+    inputs:
+      can_release:
+        required: true
+        type: string
+jobs:
+  publish-linux:
+    if: inputs.can_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.2.x"
+      - name: dependencies install
+        run: yarn install
+      - name: publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: yarn run publish
+  publish-mac:
+    if: inputs.can_release == 'true'
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.2.x"
+      - name: dependencies install
+        run: yarn install
+      - name: publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: yarn run publish
