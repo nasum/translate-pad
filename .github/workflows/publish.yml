@@ -7,12 +7,9 @@ on:
         type: string
 jobs:
   publish-linux:
+    if: inputs.can_release == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: check
-        run: 
-          echo "can_release"
-          echo ${{ inputs.can_release }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:

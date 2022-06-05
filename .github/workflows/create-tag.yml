@@ -4,7 +4,7 @@ jobs:
   create-tag:
     runs-on: ubuntu-latest
     outputs:
-      can_release: ${{ steps.push_tag.outputs.can_release }}
+      can_release: ${{ steps.push_tag.outputs.   }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -23,7 +23,7 @@ jobs:
           set -eux
           git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "::set-output name=can_release::true"
   check:
-    needs: [create-tag]
+    needs: create-tag
     runs-on: ubuntu-latest
     steps:
       - name: check
@@ -32,7 +32,7 @@ jobs:
           echo "${{ needs.create-tag.outputs.can_release }}"
           echo "end"
   call-workflow:
-    needs: [create-tag]
+    needs: create-tag
     uses: ./.github/workflows/publish.yml
     with:
       can_release: ${{ needs.create-tag.outputs.can_release }} 
