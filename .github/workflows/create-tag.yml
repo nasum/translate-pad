@@ -1,10 +1,10 @@
 name: create tag
 on: push
-env:
-  CAN_RELEASE: false
 jobs:
   create-tag:
     runs-on: ubuntu-latest
+    outputs:
+      can_release: ${{ steps.push_tag.outputs.can_release }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -17,12 +17,14 @@ jobs:
           git config --local user.email "{{ github.actor }}@users.noreply.github.com"
           git config --local user.name "{{ github.actor }}"
       - name: push tag
+        id: push_tag
         continue-on-error: true
         run: |
           set -eux
-          git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "CAN_RELEASE=true" > $GITHUB_ENV
+          git tag -a v${{ env.PACKAGE_VERSION }} -m "Release v${{ env.PACKAGE_VERSION }}" && git push origin v${{ env.PACKAGE_VERSION }} && echo "::set-output can_release=true"
   call-workflow:
     needs: [create-tag]
+    if: ${{ needs.create-tag.outputs.can_release }} == 'true'
     uses: ./.github/workflows/publish.yml
     with:
       can_release: $CAN_RELEASE
