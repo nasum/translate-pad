@@ -9,4 +9,4 @@ jobs:
         with:
           node-version: "18.2.x"
       - name: publish
-        run: yarn --non-interactive publish
+        run: yarn run publish
