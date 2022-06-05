@@ -7,7 +7,6 @@ on:
         type: string
 jobs:
   publish-linux:
-    if: inputs.can_release == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: check
