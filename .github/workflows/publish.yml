@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check
-        run: echo ${{ inputs.can_release }}
+        run: 
+          echo "can_release"
+          echo ${{ inputs.can_release }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
