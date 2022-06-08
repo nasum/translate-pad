@@ -9,6 +9,7 @@
   "description": "english translation app",
   "main": ".webpack/main",
   "scripts": {
+    "commit": "cz",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
@@ -23,7 +24,10 @@
   },
   "license": "MIT",
   "config": {
-    "forge": "./forge.config.js"
+    "forge": "./forge.config.js",
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.63",
@@ -38,7 +42,9 @@
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/webpack-asset-relocator-loader": "1.7.0",
+    "commitizen": "^4.2.4",
     "css-loader": "^6.0.0",
+    "cz-conventional-changelog": "3.3.0",
     "electron": "19.0.1",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.25.0",
