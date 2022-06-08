@@ -47,4 +47,4 @@ jobs:
       - name: publish
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: yarn run publish --arch arm
+        run: yarn run publish --arch arm64
