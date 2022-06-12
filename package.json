@@ -51,7 +51,7 @@
     "css-loader": "^6.0.0",
     "cz-conventional-changelog": "3.3.0",
     "electron": "19.0.1",
-    "eslint": "^8.0.1",
+    "eslint": "^8.17.0",
     "eslint-plugin-import": "^2.25.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
     "husky": "^8.0.0",
