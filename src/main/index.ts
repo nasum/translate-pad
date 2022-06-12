@@ -15,6 +15,16 @@ if (require("electron-squirrel-startup")) {
   app.quit();
 }
 
+const iconPath = (() => {
+  if (process.platform === "win32") {
+    return `${__dirname}/assets/icon.ico`;
+  } else if (process.platform === "darwin") {
+    return `${__dirname}/assets/icon.icns`;
+  } else {
+    return `${__dirname}/assets/icon.png`;
+  }
+})();
+
 const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -24,6 +34,7 @@ const createWindow = (): void => {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    icon: iconPath,
   });
 
   // and load the index.html of the app.

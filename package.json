@@ -1,7 +1,7 @@
 {
   "name": "translate-pad",
   "productName": "translate-pad",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "repository": {
     "type": "git",
     "url": "https://github.com/nasum/translate-pad"
@@ -47,6 +47,7 @@
     "@vercel/webpack-asset-relocator-loader": "1.7.0",
     "add": "^2.0.6",
     "commitizen": "^4.2.4",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.0.0",
     "cz-conventional-changelog": "3.3.0",
     "electron": "19.0.1",
