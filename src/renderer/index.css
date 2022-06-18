@@ -1,5 +1,6 @@
 @import "ress/ress.css";
 @import "bulma/bulma.sass";
+@import "flag-icons/css/flag-icons.css";
 
 #app {
   height: 100vh;
@@ -7,4 +8,9 @@
 
 body::-webkit-scrollbar {
   display: none;
+  color: #333333;
+}
+
+.ui-background {
+  background-color: #F1F1F0;
 }
