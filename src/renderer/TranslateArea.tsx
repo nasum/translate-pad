@@ -2,6 +2,7 @@ import React, { useState, useReducer } from "react";
 
 import { TranslatePane } from "./TranslatePane";
 import { SettingPane } from "./SettingPane";
+import { NavBar } from "./NavBar";
 import { getDeepLAccessKey, setDeepLAccessKey } from "./storage";
 
 import { Setting, SettingAction } from "./types";
@@ -23,9 +24,13 @@ export const TranslateArea = () => {
 
   const [openSetting, setOpenSetting] = useState(false);
 
+  const handleToggleSetting = () => {
+    setOpenSetting(!openSetting);
+  };
+
   return (
     <>
-      <button onClick={() => setOpenSetting(!openSetting)}>open setting</button>
+      <NavBar toggleSetting={handleToggleSetting} />
       {openSetting ? (
         <SettingPane setting={setting} changeSetting={dispatch} />
       ) : (

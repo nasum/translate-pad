@@ -1,22 +1,10 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+@import "ress/ress.css";
+@import "bulma/bulma.sass";
+
+#app {
+  height: 100vh;
 }
 
-.translate-area {
-  display: flex;
-  flex-direction: row;
-}
-
-.left-area {
-  width: 20rem;
-  height: 20rem;
-}
-
-.right-area {
-  width: 20rem;
-  height: 20rem;
+body::-webkit-scrollbar {
+  display: none;
 }
