@@ -8,7 +8,6 @@ type Props = {
 const NavBarContainer = style.aside`
     position: absolute;
     z-index: 10;
-    background-color: white;
     height: 100vh;
     width: 200px;
     margin-left: -190px;
@@ -26,7 +25,7 @@ const NavBarInner = style.div`
 
 export const NavBar = ({ toggleSetting }: Props) => {
   return (
-    <NavBarContainer className="menu">
+    <NavBarContainer className="menu ui-background">
       <NavBarInner className="panel">
         <p className="menu-label">Setting</p>
         <ul className="menu-list">

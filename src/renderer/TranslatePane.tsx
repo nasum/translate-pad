@@ -48,10 +48,12 @@ export const TranslatePane = () => {
       <TranslateTextArea
         handleOnChange={onLeftTextareaChange}
         textAreaRef={LeftTextareaRef}
+        lang="jp"
       />
       <TranslateTextArea
         handleOnChange={onRightTextareaChange}
         textAreaRef={RightTextareaRef}
+        lang="us"
       />
     </FullHeightDiv>
   );
