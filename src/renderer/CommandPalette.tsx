@@ -85,6 +85,7 @@ export const CommandPlette = ({ handleToggleOpen }: Props) => {
         <input
           type="text"
           className="input"
+          autoFocus={true}
           onClick={clickInput}
           onChange={(e) => {
             setTarget(e.currentTarget.value);

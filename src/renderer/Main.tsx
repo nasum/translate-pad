@@ -9,10 +9,13 @@ import { CommandPlette } from "./CommandPalette";
 export function Main() {
   const [openCommandPalette, setOpenCommandPalette] = useState(false);
 
-  useHotkeys(
+  const ref = useHotkeys(
     "cmd+p",
     () => {
       setOpenCommandPalette(!openCommandPalette);
+    },
+    {
+      enableOnTags: ["INPUT", "TEXTAREA"],
     },
     [openCommandPalette]
   );
