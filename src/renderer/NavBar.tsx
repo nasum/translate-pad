@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import style from "styled-components";
-
-type Props = {
-  toggleSetting: () => void;
-};
 
 const NavBarContainer = style.aside`
     position: absolute;
@@ -23,14 +20,14 @@ const NavBarInner = style.div`
     padding: 10px;
 `;
 
-export const NavBar = ({ toggleSetting }: Props) => {
+export const NavBar = () => {
   return (
     <NavBarContainer className="menu ui-background">
       <NavBarInner className="panel">
         <p className="menu-label">Setting</p>
         <ul className="menu-list">
           <li>
-            <a onClick={toggleSetting}>open setting</a>
+            <Link to="/setting">Setting</Link>
           </li>
         </ul>
       </NavBarInner>
