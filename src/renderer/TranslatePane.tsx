@@ -15,7 +15,7 @@ export const TranslatePane = () => {
   const [leftText, setLeftText] = useState<string>("");
   const [rightText, setRightText] = useState<string>("");
 
-  const leftResult = useTranslate(leftText, "en-US");
+  const leftResult = useTranslate(leftText, "us");
   const rightResult = useTranslate(rightText, "ja");
 
   useEffect(() => {

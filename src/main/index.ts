@@ -77,8 +77,9 @@ ipcMain.handle("translate", async (event, arg) => {
 
   const result = await translator.translateText(arg.text, null, arg.target);
 
-  console.log("text: " + arg.text);
-  console.log("translate: " + result.text);
+  console.log("target    : " + arg.target);
+  console.log("text      : " + arg.text);
+  console.log("translate : " + result.text);
 
   return result.text;
 });
