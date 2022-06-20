@@ -34,7 +34,7 @@ module.exports = {
             {
               html: "./src/renderer/index.html",
               js: "./src/renderer/renderer.ts",
-              name: "main_window",
+              name: "main",
             },
           ],
         },
