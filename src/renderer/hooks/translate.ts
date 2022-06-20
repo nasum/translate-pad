@@ -5,6 +5,13 @@ import { debounce } from "mabiki";
 
 import { getDeepLAccessKey } from "../storage";
 
+type TargetCode = "ja" | "us";
+
+const targetCodeMap = {
+  us: "en-US",
+  ja: "ja",
+};
+
 const translate = (
   text: string,
   target: TargetLanguageCode
@@ -18,7 +25,7 @@ const translate = (
   });
 };
 
-export const useTranslate = (text: string, target: TargetLanguageCode) => {
+export const useTranslate = (text: string, target: TargetCode) => {
   const [result, setResult] = useState<string>("");
 
   const doTranslate = useCallback(
@@ -31,7 +38,7 @@ export const useTranslate = (text: string, target: TargetLanguageCode) => {
   );
 
   useEffect(() => {
-    doTranslate(text, target);
+    doTranslate(text, targetCodeMap[target] as TargetLanguageCode);
   }, [text, target]);
 
   return result;

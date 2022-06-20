@@ -5,7 +5,7 @@ import style from "styled-components";
 
 import { createRoot } from "react-dom/client";
 
-import { TranslateArea } from "./TranslateArea";
+import { Main } from "./Main";
 import { SettingPane } from "./SettingPane";
 
 const RootContainer = style.div`
@@ -19,7 +19,7 @@ function init() {
     <RootContainer className="root-container">
       <BrowserRouter>
         <Routes>
-          <Route path="/main" element={<TranslateArea />} />
+          <Route path="/main" element={<Main />} />
           <Route path="/setting" element={<SettingPane />} />
         </Routes>
       </BrowserRouter>
