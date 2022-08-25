@@ -3554,10 +3554,10 @@ findup-sync@^4.0.0:
     micromatch "^4.0.2"
     resolve-dir "^1.0.1"
 
-flag-icons@^6.5.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/flag-icons/-/flag-icons-6.5.1.tgz#b33607cccd79af6c54650f0985d8b5d0ed27c2ab"
-  integrity sha512-UntYB82hL+037px44bWs7e0uZkyb0sr9AxX09QrWGnKHeee/ztK8BmGnj4IPyj72pGGrpLdSsfc3Rk8p+HI3dw==
+flag-icons@^6.6.6:
+  version "6.6.6"
+  resolved "https://registry.yarnpkg.com/flag-icons/-/flag-icons-6.6.6.tgz#9ddff81e1126778ca6a5a1e0e2cfac2e865f2cb7"
+  integrity sha512-4lHDKxldnQ7q617pf9Dx9nAetT+9zcMpUexbRrc9kjLw9KJgZ83zA5Dky3Vv7ZDzUjAiZ46x/cy5P0HnEnqA2A==
 
 flat-cache@^3.0.4:
   version "3.0.4"
